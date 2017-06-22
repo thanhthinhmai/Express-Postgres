@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "partials/head.html" %}
+</head>
+<body>
+       {% include "partials/header.html" %}
+    <div id="hero-image">
+        <h1 id="hero-title">{{ title }}</h1>
+    </div>
+    <div id="posters-wrapper" class="content-padding clearfix">
+        {% for i in movies %}
+        <div class="poster">
+            <a href="/star_wars_episode/{{ i.id }}">
+                <img src ='/images/{{ i.poster }}' class ='img-responsive'>
+                <div class="poster-info-overlay">
+                    <h3>{{ i.title }}</h3>
+                    <h4>View More <i class="fa fa-arrow-right"></i></h4>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+        {% include "partials/footer.html" %}
+</body>
+</html>
