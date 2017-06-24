@@ -5,30 +5,38 @@
 </head>
 <body>
     {% include "partials/header.html" %}
-    <div id="hero-image-single" style='background-image: url('/images/{{ movies.hero_image }}')'>
+    {% for i in movies %}
+    <div id="hero-image-single" style='background-image: url("/images/{{ i.hero_image }}")'>
         <h1 id="hero-title">{{ title }}</h1>
     </div>
 
     <div class="content-padding clearfix">
         <div class="poster-wrapper">
-            <img src="/images/{{ movies.poster }}" class="img-responsive">
+            <img src="/images/{{ i.poster }}" class="img-responsive">
         </div>    
 
         <div class="description-wrapper">
             <div class="description">
                 <h2 class="movie-header">Description</h2>
-                <p>{{ movies.description }}</p>
+                <p>{{ i.description }}</p>
             </div>
 
-            <div class="main_characters">
+            <div class="main-characters">
                 <h2 class="movie-header">Main Characters</h2>
                 <ul>
                
-                 {{ movies.main_characters }}
+                    {% for j in i.main_characters %}
+
+                        <li>
+                            {{ j }}
+                        </li>
+                    {% endfor %}
+                 
                 </ul>
             </div>
         </div>
     </div>
+    {% endfor %}
 
     {% include "partials/footer.html" %}
 </body>
